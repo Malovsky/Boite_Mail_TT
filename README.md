@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Test technique Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+Déroulé et organisation
+Ce test se compose de 2 parties:
 
-In the project directory, you can run:
+un MVP
+des features "bonus"
+La partie MVP est obligatoire afin de completer le test. Les features "bonus" sont quant à elles non obligatoire et peuvent être complétées indépendamment, "à la carte".
 
-### `npm start`
+## Présentation et contexte de l'application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+L'outil est une application web de gestion des messages clients qui nous sont envoyés depuis la plateforme wethenew, elle permet principalement la visualisation de tous les messages envoyés.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Les messages peuvent être de plusieurs types: email, SMS, voix ... Par conséquent, cela s'applique à l'équipe du service client de Wethenew. Chaque administrateur du service client peut afficher ses propres messages.
 
-### `npm test`
+Par conséquent, le but de cet exercice est d'utiliser l'API (RESTFUL) JSON disponible pour implémenter le code client de l'application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## MVP requirements
 
-### `npm run build`
+- Intégrer la version mobile et la version desktop.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Je peux changer le compte administrateur à partir du menu déroulant, puis je peux voir une liste de messages dédiée pour le compte administrateur sélectionné.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Je clique sur un message et visualise les détails du message
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Un compteur de messages non lus qui sera mis à jour de façon persistante, lorsque vous cliquez sur un nouveau message non lu (envoyer une requête à l'API pour conserver les données)
 
-### `npm run eject`
+## FEATURES BONUS A LA CARTE
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### INFINITE SCROLL
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Je peux faire défiler la liste des messages sur quelques pages à l'infini (jusqu'a la fin de la liste)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### ROUTING
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Intégrer la lecture d'un message en donnant la possibilité d'y accéder depuis l'URL (routing)
 
-## Learn More
+## Contenu
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Les maquettes sont fournies au format [PDF](maquettes/wtn-crm-fe-test.pdf) et au format [FIGMA](https://www.figma.com/) afin de récupérer les assets et avoir le details pour aider l'implémentation.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Bonus Appréciés
 
-### Code Splitting
+- Dates sur la liste des messages (ex: "Hier", "Il y a 2 heures")
+- Tests (fonctionnels, unitaires)
+- Fidélité des écrans avec les maquettes fournies
+- Bonnes pratiques d'accessibilité
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contraintes techniques
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Tooling/Framework base du test sur ReactJs, mais pour le reste à vous de décider !
+- Utiliser l'API fourni
+- Qualité du code
