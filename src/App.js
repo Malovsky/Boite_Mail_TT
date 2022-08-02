@@ -15,6 +15,7 @@ function App() {
   const [currentMessage, setCurrentMessage] = useState();
 
   useEffect(() => {
+    console.log("APP JS TYPEOF : ", typeof customers);
     const fetchCustomers = async () => {
       try {
         const response = await axios.get("http://localhost:8080/customers");

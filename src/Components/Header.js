@@ -1,6 +1,11 @@
 import { InboxInIcon } from "@heroicons/react/outline";
 
 const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
+  const handleChange = (e) => {
+    setCurrentCustomer(
+      customers.find((customer) => customer.id === Number(e.target.value))
+    );
+  };
   return (
     <>
       <div className="bg-black text-cyan-500 m4-4 flex justify-between">
@@ -33,7 +38,12 @@ const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
               alt="Profil du manager"
             />
           )}
-          <select name="select" className="bg-black text-white">
+
+          <select
+            name="select"
+            className="bg-black text-white"
+            onChange={(e) => handleChange(e)}
+          >
             {customers.map((customer) => {
               return (
                 <option key={customer.id} value={customer.id}>
