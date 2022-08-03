@@ -1,7 +1,9 @@
 import { InboxInIcon } from "@heroicons/react/outline";
 
 const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
+  console.log("HEADER REFRESH");
   const handleChange = (e) => {
+    e.preventDefault();
     setCurrentCustomer(
       customers.find((customer) => customer.id === Number(e.target.value))
     );
