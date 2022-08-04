@@ -15,8 +15,6 @@ function App() {
   const [currentMessage, setCurrentMessage] = useState();
 
   useEffect(() => {
-    console.log("USE EFFECT 1 (APP.JS)");
-
     const fetchDatas = async () => {
       try {
         const responseCustomer = await axios.get(
@@ -26,7 +24,7 @@ function App() {
         setCurrentCustomer(responseCustomer.data[0]);
 
         const responseMessages = await axios.get(
-          `http://localhost:8080/customers/${responseCustomer.data[0].id}/messages`
+          `http://localhost:8080/customers/${responseCustomer.data[0].id}/messages/?sort=date%3Adesc&page_size=100`
         );
         setMessages(responseMessages.data);
       } catch (error) {
@@ -45,7 +43,12 @@ function App() {
         setCurrentCustomer={setCurrentCustomer}
       />
       <div className="flex justify-between">
-        <MessageList messages={messages} />
+        <MessageList
+          messages={messages}
+          currentCustomer={currentCustomer}
+          currentMessage={currentMessage}
+          setMessages={setMessages}
+        />
         <MessageDetails />
       </div>
     </div>

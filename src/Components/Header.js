@@ -1,7 +1,6 @@
-import { InboxInIcon } from "@heroicons/react/outline";
+import { MailIcon } from "@heroicons/react/outline";
 
 const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
-  console.log("HEADER REFRESH");
   const handleChange = (e) => {
     e.preventDefault();
     setCurrentCustomer(
@@ -20,7 +19,7 @@ const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
                 WE&#8202;THE&#8202;NEW
               </p>
               <div className="flex items-center justify-around gap-3 bg-cyan-500 text-white py-0 px-2">
-                <InboxInIcon className="h-4" />
+                <MailIcon className="h-4" />
                 {currentCustomer ? (
                   <p>{currentCustomer.unread_messages}</p>
                 ) : (
