@@ -42,7 +42,7 @@ function App() {
         currentCustomer={currentCustomer}
         setCurrentCustomer={setCurrentCustomer}
       />
-      <div className="flex justify-between">
+      <div className="flex w-full">
         <MessageList
           messages={messages}
           currentCustomer={currentCustomer}

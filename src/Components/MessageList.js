@@ -28,26 +28,50 @@ const MessageList = ({
   }, [currentCustomer, setMessages]);
 
   return (
-    <div className="">
+    <div className="overflow-y-scroll h-screen w-1/3">
       {messages.map((message) => {
         return (
-          <div key={message.id} className="p-2 border-b-2 border-gray-500">
+          <div
+            key={message.id}
+            className="px-2 py-4 border-b-2 border-gray-500 flex"
+          >
             {message.type === "phone" && (
-              <PhoneIcon className={`h-4 ${message.read && "text-gray-400"}`} />
+              <PhoneIcon
+                className={`h-6 mr-4 ${message.read && "text-gray-400"}`}
+              />
             )}
 
             {message.type === "email" &&
               (message.read ? (
-                <MailOpenIcon className="h-4 text-gray-400" />
+                <MailOpenIcon className="h-6 mr-4 text-gray-400" />
               ) : (
-                <MailIcon className="h-4" />
+                <MailIcon className="h-6 mr-4" />
               ))}
 
             {message.type === "sms" && (
               <ChatAlt2Icon
-                className={`h-4 ${message.read && "text-gray-400"}`}
+                className={`h-6 mr-4 ${message.read && "text-gray-400"}`}
               />
             )}
+            <div className="flex flex-col">
+              <p
+                className={`text-sm ${!message.read && "font-bold"} md:text-xl`}
+              >
+                {message.contact.firstname} {message.contact.lastname}
+              </p>
+              {message.type === "email" && (
+                <p className="text-sm">Message envoyé depuis wethenew.com</p>
+              )}
+              {message.type === "phone" && (
+                <p className="text-sm">
+                  Appel téléphonique depuis le Service clients WTN
+                </p>
+              )}
+              {message.type === "sms" && (
+                <p className="text-sm">SMS depuis le Service clients WTN</p>
+              )}
+              <p className="text-sm text-gray-400">{message.subject}</p>
+            </div>
           </div>
         );
       })}
