@@ -12,6 +12,21 @@ const MessageList = ({
   currentMessage,
   setMessages,
 }) => {
+  function formatDateWTN(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = String(d.getFullYear()).slice(-2),
+      hour = "" + d.getHours(),
+      min = "" + d.getMinutes();
+
+    const ajd = new Date();
+
+    if (d.toLocaleDateString("en-US") === ajd.toLocaleDateString("en-US")) {
+      return [hour, min].join(":");
+    } else return [day, month, year].join("-");
+  }
+
   useEffect(() => {
     const fetchMessages = async () => {
       try {
@@ -33,13 +48,11 @@ const MessageList = ({
         return (
           <div
             key={message.id}
-            className="px-2 py-4 border-b-2 border-gray-500 flex"
+            className={`px-2 py-4 border-b-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
+              message.read && "text-gray-400"
+            }`}
           >
-            {message.type === "phone" && (
-              <PhoneIcon
-                className={`h-6 mr-4 ${message.read && "text-gray-400"}`}
-              />
-            )}
+            {message.type === "phone" && <PhoneIcon className={`h-6 mr-4 `} />}
 
             {message.type === "email" &&
               (message.read ? (
@@ -48,11 +61,7 @@ const MessageList = ({
                 <MailIcon className="h-6 mr-4" />
               ))}
 
-            {message.type === "sms" && (
-              <ChatAlt2Icon
-                className={`h-6 mr-4 ${message.read && "text-gray-400"}`}
-              />
-            )}
+            {message.type === "sms" && <ChatAlt2Icon className={`h-6 mr-4 `} />}
             <div className="flex flex-col">
               <p
                 className={`text-sm ${!message.read && "font-bold"} md:text-xl`}
@@ -72,6 +81,10 @@ const MessageList = ({
               )}
               <p className="text-sm text-gray-400">{message.subject}</p>
             </div>
+
+            <p className="text-sm whitespace-nowrap">
+              {formatDateWTN(message.date)}
+            </p>
           </div>
         );
       })}
