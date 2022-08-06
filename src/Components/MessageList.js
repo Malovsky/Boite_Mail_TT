@@ -10,6 +10,7 @@ const MessageList = ({
   messages,
   currentCustomer,
   currentMessage,
+  setCurrentMessage,
   setMessages,
 }) => {
   function formatDateWTN(date) {

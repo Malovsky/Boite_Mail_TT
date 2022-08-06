@@ -48,8 +48,9 @@ function App() {
           currentCustomer={currentCustomer}
           currentMessage={currentMessage}
           setMessages={setMessages}
+          setCurrentMessage={setCurrentMessage}
         />
-        <MessageDetails />
+        <MessageDetails currentMessage={currentMessage} />
       </div>
     </div>
   );
