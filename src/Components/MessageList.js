@@ -50,7 +50,7 @@ const MessageList = ({
           <div
             onClick={() => setCurrentMessage(message)}
             key={message.id}
-            className={`px-2 py-4 border-b-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
+            className={`px-2 py-4 border-b-2 border-r-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
               message.read && "text-gray-400"
             } ${currentMessage === message && "bg-cyan-100 border-r-4 "}`}
           >
