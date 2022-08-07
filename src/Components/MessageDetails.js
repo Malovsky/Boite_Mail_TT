@@ -29,23 +29,21 @@ const MessageDetails = ({ currentMessage }) => {
         </p>
       </div>
       <div className="bg-white m-4 p-2  border-2 border-gray-400">
-        <div className="">
-          <p className="font-bold flex">
-            {currentMessage.type === "phone" && (
-              <PhoneIcon className={`h-6 mr-4 `} />
-            )}
-            {currentMessage.type === "email" && (
-              <MailIcon className={`h-6 mr-4 `} />
-            )}
-            {currentMessage.type === "sms" && (
-              <ChatAlt2Icon className={`h-6 mr-4 `} />
-            )}
-            {currentMessage.contact.firstname} {currentMessage.contact.lastname}
-          </p>
+        <p className="font-bold flex">
+          {currentMessage.type === "phone" && (
+            <PhoneIcon className={`h-6 mr-4 `} />
+          )}
+          {currentMessage.type === "email" && (
+            <MailIcon className={`h-6 mr-4 `} />
+          )}
+          {currentMessage.type === "sms" && (
+            <ChatAlt2Icon className={`h-6 mr-4 `} />
+          )}
+          {currentMessage.contact.firstname} {currentMessage.contact.lastname}
+        </p>
 
-          <p>{currentMessage.contact.email}</p>
-          <p className="text-gray-400">{currentMessage.date}</p>
-        </div>
+        <p>{currentMessage.contact.email}</p>
+        <p className="text-gray-400">{currentMessage.date}</p>
         <div>
           <hr className="my-4" />
           <p className="">{currentMessage.body}</p>

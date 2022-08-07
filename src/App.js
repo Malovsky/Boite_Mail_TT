@@ -41,6 +41,7 @@ function App() {
         customers={customers}
         currentCustomer={currentCustomer}
         setCurrentCustomer={setCurrentCustomer}
+        setCurrentMessage={setCurrentMessage}
       />
       <div className="flex w-full">
         <MessageList

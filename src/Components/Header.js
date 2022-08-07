@@ -1,11 +1,17 @@
 import { MailIcon } from "@heroicons/react/outline";
 
-const Header = ({ customers, currentCustomer, setCurrentCustomer }) => {
+const Header = ({
+  customers,
+  currentCustomer,
+  setCurrentCustomer,
+  setCurrentMessage,
+}) => {
   const handleChange = (e) => {
     e.preventDefault();
     setCurrentCustomer(
       customers.find((customer) => customer.id === Number(e.target.value))
     );
+    setCurrentMessage("");
   };
   return (
     <>
