@@ -2,7 +2,11 @@ import { PhoneIcon } from "@heroicons/react/solid";
 import { MailIcon } from "@heroicons/react/solid";
 import { ChatAlt2Icon } from "@heroicons/react/solid";
 
-const MessageDetails = ({ currentMessage }) => {
+const MessageDetails = ({
+  currentMessage,
+  showMessageOnMobile,
+  setShowMessageOnMobile,
+}) => {
   const formatDateWTN = (date) => {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -15,11 +19,17 @@ const MessageDetails = ({ currentMessage }) => {
   };
 
   return !currentMessage ? (
-    <div className="flex justify-center items-center w-full bg-gray-200">
+    <div
+      className={`hidden sm:flex justify-center items-center sm:w-2/3 bg-gray-200`}
+    >
       <p className="text-xl font-bold">Sélectionnez un message à voir</p>
     </div>
   ) : (
-    <div className="bg-gray-200 w-2/3">
+    <div
+      className={`${
+        showMessageOnMobile ? "w-full" : "hidden"
+      } bg-gray-200 sm:block sm:w-2/3 flex-col`}
+    >
       <div className="bg-white m-4 p-2 border-2 border-gray-400">
         <p className="my-2 font-bold">
           {currentMessage.contact.firstname} {currentMessage.contact.lastname}
@@ -60,6 +70,13 @@ const MessageDetails = ({ currentMessage }) => {
           <p className="">{currentMessage.body}</p>
         </div>
       </div>
+
+      <button
+        onClick={() => setShowMessageOnMobile(false)}
+        className="bg-cyan-200 m-4 text-cyan-700 py-2 px-4 border-2 border-cyan-500 rounded-md sm:hidden"
+      >
+        Revenir à la list
+      </button>
     </div>
   );
 };

@@ -12,6 +12,8 @@ const MessageList = ({
   currentMessage,
   setCurrentMessage,
   setMessages,
+  showMessageOnMobile,
+  setShowMessageOnMobile,
 }) => {
   const formatDateWTN = (date) => {
     var d = new Date(date),
@@ -26,6 +28,11 @@ const MessageList = ({
     if (d.toLocaleDateString("en-US") === ajd.toLocaleDateString("en-US")) {
       return [hour, min].join(":");
     } else return [day, month, year].join("-");
+  };
+
+  const handleClickOnMail = (message) => {
+    setCurrentMessage(message);
+    setShowMessageOnMobile(true);
   };
 
   useEffect(() => {
@@ -44,11 +51,15 @@ const MessageList = ({
   }, [currentCustomer, setMessages]);
 
   return (
-    <div className="overflow-y-scroll h-screen w-1/3">
+    <div
+      className={`${
+        showMessageOnMobile ? "hidden" : "block"
+      } w-full overflow-y-scroll h-screen sm:block sm:w-1/3`}
+    >
       {messages.map((message) => {
         return (
           <div
-            onClick={() => setCurrentMessage(message)}
+            onClick={() => handleClickOnMail(message)}
             key={message.id}
             className={`px-2 py-4 justify-between border-b-2 border-r-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
               message.read && "text-gray-400"

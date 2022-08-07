@@ -14,6 +14,8 @@ function App() {
   const [currentCustomer, setCurrentCustomer] = useState();
   const [currentMessage, setCurrentMessage] = useState();
 
+  const [showMessageOnMobile, setShowMessageOnMobile] = useState(false);
+
   useEffect(() => {
     const fetchDatas = async () => {
       try {
@@ -50,8 +52,14 @@ function App() {
           currentMessage={currentMessage}
           setMessages={setMessages}
           setCurrentMessage={setCurrentMessage}
+          showMessageOnMobile={showMessageOnMobile}
+          setShowMessageOnMobile={setShowMessageOnMobile}
         />
-        <MessageDetails currentMessage={currentMessage} />
+        <MessageDetails
+          currentMessage={currentMessage}
+          showMessageOnMobile={showMessageOnMobile}
+          setShowMessageOnMobile={setShowMessageOnMobile}
+        />
       </div>
     </div>
   );
