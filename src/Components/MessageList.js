@@ -13,7 +13,7 @@ const MessageList = ({
   setCurrentMessage,
   setMessages,
 }) => {
-  function formatDateWTN(date) {
+  const formatDateWTN = (date) => {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
       day = "" + d.getDate(),
@@ -26,7 +26,7 @@ const MessageList = ({
     if (d.toLocaleDateString("en-US") === ajd.toLocaleDateString("en-US")) {
       return [hour, min].join(":");
     } else return [day, month, year].join("-");
-  }
+  };
 
   useEffect(() => {
     const fetchMessages = async () => {

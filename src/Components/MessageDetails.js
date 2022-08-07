@@ -3,6 +3,17 @@ import { MailIcon } from "@heroicons/react/solid";
 import { ChatAlt2Icon } from "@heroicons/react/solid";
 
 const MessageDetails = ({ currentMessage }) => {
+  const formatDateWTN = (date) => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = String(d.getFullYear()).slice(-2),
+      hour = "" + d.getHours(),
+      min = "" + d.getMinutes();
+
+    return `Le ${[day, month, year].join("-")} à ${[hour, min].join(":")}`;
+  };
+
   return !currentMessage ? (
     <div className="flex justify-center items-center w-full bg-gray-200">
       <p className="text-xl font-bold">Sélectionnez un message à voir</p>
@@ -43,7 +54,7 @@ const MessageDetails = ({ currentMessage }) => {
         </p>
 
         <p>{currentMessage.contact.email}</p>
-        <p className="text-gray-400">{currentMessage.date}</p>
+        <p className="text-gray-400">{formatDateWTN(currentMessage.date)}</p>
         <div>
           <hr className="my-4" />
           <p className="">{currentMessage.body}</p>
