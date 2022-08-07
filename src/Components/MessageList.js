@@ -50,41 +50,49 @@ const MessageList = ({
           <div
             onClick={() => setCurrentMessage(message)}
             key={message.id}
-            className={`px-2 py-4 border-b-2 border-r-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
+            className={`px-2 py-4 justify-between border-b-2 border-r-2 border-gray-500 flex hover:cursor-pointer hover:bg-cyan-100 ${
               message.read && "text-gray-400"
             } ${currentMessage === message && "bg-cyan-100 border-r-4 "}`}
           >
-            {message.type === "phone" && <PhoneIcon className={`h-6 mr-4 `} />}
-
-            {message.type === "email" &&
-              (message.read ? (
-                <MailOpenIcon className="h-6 mr-4 text-gray-400" />
-              ) : (
-                <MailIcon className="h-6 mr-4" />
-              ))}
-
-            {message.type === "sms" && <ChatAlt2Icon className={`h-6 mr-4 `} />}
-            <div className="flex flex-col">
-              <p
-                className={`text-sm ${!message.read && "font-bold"} md:text-xl`}
-              >
-                {message.contact.firstname} {message.contact.lastname}
-              </p>
-              {message.type === "email" && (
-                <p className="text-sm">Message envoyé depuis wethenew.com</p>
-              )}
+            <div className="flex">
               {message.type === "phone" && (
-                <p className="text-sm">
-                  Appel téléphonique depuis le Service clients WTN
-                </p>
+                <PhoneIcon className={`h-6 mr-4 `} />
               )}
+
+              {message.type === "email" &&
+                (message.read ? (
+                  <MailOpenIcon className="h-6 mr-4 text-gray-400" />
+                ) : (
+                  <MailIcon className="h-6 mr-4" />
+                ))}
+
               {message.type === "sms" && (
-                <p className="text-sm">SMS depuis le Service clients WTN</p>
+                <ChatAlt2Icon className={`h-6 mr-4 `} />
               )}
-              <p className="text-sm text-gray-400">{message.subject}</p>
+              <div className="flex flex-col">
+                <p
+                  className={`text-sm ${
+                    !message.read && "font-bold"
+                  } md:text-xl`}
+                >
+                  {message.contact.firstname} {message.contact.lastname}
+                </p>
+                {message.type === "email" && (
+                  <p className="text-sm">Message envoyé depuis wethenew.com</p>
+                )}
+                {message.type === "phone" && (
+                  <p className="text-sm">
+                    Appel téléphonique depuis le Service clients WTN
+                  </p>
+                )}
+                {message.type === "sms" && (
+                  <p className="text-sm">SMS depuis le Service clients WTN</p>
+                )}
+                <p className="text-sm text-gray-400">{message.subject}</p>
+              </div>
             </div>
 
-            <p className="text-sm whitespace-nowrap">
+            <p className="text-sm whitespace-nowrap mr-2">
               {formatDateWTN(message.date)}
             </p>
           </div>
