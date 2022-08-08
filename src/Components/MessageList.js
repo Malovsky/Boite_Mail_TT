@@ -30,9 +30,35 @@ const MessageList = ({
     } else return [day, month, year].join("-");
   };
 
-  const handleClickOnMail = (message) => {
-    setCurrentMessage(message);
-    setShowMessageOnMobile(true);
+  // TODO : DONT WORK
+  const handleClickOnMail = async (message) => {
+    try {
+      // const mailUpdated = { ...message, read: true };
+
+      // var form_data = new FormData();
+
+      // for (var key in mailUpdated) {
+      //   form_data.append(key, mailUpdated[key]);
+      // }
+
+      const responseMAJMessage = await axios.patch(
+        `http://localhost:8080/customers/${currentCustomer.id}/messages/${message.id}`,
+        //                    /customers/{customer_id}/messages/{message_id}
+        // form_data,
+        { ...message, read: true },
+        {
+          headers: {
+            // "Content-Type": "multipart/form-data",
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+
+      setCurrentMessage(responseMAJMessage.data);
+      setShowMessageOnMobile(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

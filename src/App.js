@@ -16,6 +16,8 @@ function App() {
 
   const [showMessageOnMobile, setShowMessageOnMobile] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchDatas = async () => {
       try {
@@ -29,6 +31,8 @@ function App() {
           `http://localhost:8080/customers/${responseCustomer.data[0].id}/messages/?sort=date%3Adesc&page_size=100`
         );
         setMessages(responseMessages.data);
+
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -37,7 +41,9 @@ function App() {
     fetchDatas();
   }, []);
 
-  return (
+  return isLoading ? (
+    <p>Loading ...</p>
+  ) : (
     <div className="App">
       <Header
         customers={customers}
