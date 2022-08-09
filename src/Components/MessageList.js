@@ -30,7 +30,7 @@ const MessageList = ({
     } else return [day, month, year].join("-");
   };
 
-  // TODO : DONT WORK
+  // Ne fonctionne pas
   const handleClickOnMail = async (message) => {
     try {
       // const mailUpdated = { ...message, read: true };
@@ -43,13 +43,13 @@ const MessageList = ({
 
       const responseMAJMessage = await axios.patch(
         `http://localhost:8080/customers/${currentCustomer.id}/messages/${message.id}`,
-        //                    /customers/{customer_id}/messages/{message_id}
+
         // form_data,
         { ...message, read: true },
         {
           headers: {
-            // "Content-Type": "multipart/form-data",
-            "Content-type": "application/json; charset=UTF-8",
+            "Content-Type": "multipart/form-data",
+            // "Content-type": "application/json; charset=UTF-8",
           },
         }
       );
